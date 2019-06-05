@@ -1,0 +1,33 @@
+*{
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+.bg-height-menu{
+    height: 800px;
+}
+.bg-height-body{
+    height: 600px;
+}
+.bg-menu-color{
+    background-color: #346ae6;
+}
+.r0{
+    border-radius: 0;
+}
+.m0{
+    margin: 0;
+    border: none;
+}
+.p0{
+    padding: 0;
+}
+.my-btn-group-vertical {
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: center;
+    margin-top: 0;
+}
+.b0{
+    border: none;
+}
