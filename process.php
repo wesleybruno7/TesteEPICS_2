@@ -11,7 +11,7 @@ if (isset($_POST['add-item'])){
     $date = (string)$_POST['DATE'];
     $time = $_POST['TIME'];
     $UpdateDate = $date . ' ' . $time . ':00';
-    echo "<script>alert('$UpdateDate');</script>";
+    //echo "<script>alert('$UpdateDate');</script>";
     
     $mysqli->query("INSERT INTO Orders (ORDERNUMBER, CAMPAIN, PRODUCTNAME, CUSTOMER, STATUS, UPDATEDATE) VALUES(
         $OrderNumber, '$Campain', '$ProductName', '$Custumer', '$Status', '$UpdateDate')") or die($mysqli->error);
@@ -19,10 +19,4 @@ if (isset($_POST['add-item'])){
     header("Location: index.php");
 }
 
-if (isset($_GET['delete'])){
-    $id = $_GET['delete'];
-    
-    $mysqli->query("DELETE FROM pedidos WHERE id=$id") or die($mysqli->error);
-
-    header("Location: index.php");
-}
+?>
