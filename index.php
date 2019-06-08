@@ -90,7 +90,7 @@
             <div class="row" style="">
 
 <!-- *************************************** Inicio do container da lateral azul *************************************** -->
-            <div class="bg-primary" style="width: 15%; height: 800px; margin: 0; padding: 0;">
+            <div class="bg-primary" style="width: 15%; min-height: 800px; margin: 0; padding: 0;">
                 <div class="container-fluid" style="margin: 0; padding: 0;">
                     <div class="btn-group-vertical bg-primary" style="margin: 0; padding: 0; width: 100%; height: 100%">
                         <button id="btn0" type="button" class="btn btn-primary" style="height: 50px;"><i class="fas fa-angle-double-right mr-2"></i>Insight Tech</button>
@@ -104,7 +104,7 @@
             </div>
 <!-- *************************************** Termino do container da lateral azul *************************************** -->        
 <!-- *************************************** Inicio do quadro cinza fundo principal *************************************** -->
-            <div class="" style="background-color: whitesmoke; width: 85%; height: 800px;">
+            <div class="" style="background-color: whitesmoke; width: 85%; min-height: 800px;">
 
                 <!-- quadro all order e info do usuário (quadro branco) -->
                 <div class="" style="background-color: white; width: 100%; height: 50px;">
