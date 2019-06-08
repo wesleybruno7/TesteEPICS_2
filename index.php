@@ -9,13 +9,12 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.5.0/css/all.css" integrity="sha384-B4dIYHKNBt8Bc12p+WXckhzcICo0wtJAoU8YZTY5qE0Id1GSseTk6S+L3BlXeVIU" crossorigin="anonymous">
         <script src="https://kit.fontawesome.com/1f400e7c0b.js"></script>
 
-        <link rel="stylesheet" href="css/estilo2.css">
-
+        <link href="css/custom.css" rel="stylesheet">
     </head>
     <body>
         <?php require_once 'process.php'; ?>
         
-        <!-- inicio do modal -->
+<!-- *************************************** inicio do modal *************************************** -->
         <div class="modal fade bd-example-modal-lg" id="modalExemplo" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
             <div class="modal-dialog modal-lg" role="document">
                 <div class="modal-content">
@@ -27,50 +26,71 @@
                     </div>
                     <div class="modal-body">
                         
-                        <form>
+                        <form action="process.php" method="POST">
                             <div class="form-row">
                                 <div class="form-group col">
-                                    <input type="text" class="form-control" placeholder="Order Number">
+                                    <input type="text" name="ORDERNUMBER" class="form-control" placeholder="Order Number">
                                 </div>
                                 <div class="form-group col">
-                                    <input type="text" class="form-control" placeholder="Campain">
+                                    <input type="text" name="CAMPAIN"class="form-control" placeholder="Campain">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col">
-                                    <input type="text" class="form-control" placeholder="Product Name">
+                                    <input type="text" name="PRODUCTNAME"class="form-control" placeholder="Product Name">
                                 </div>
                             </div>
                             <div class="form-row">
                                 <div class="form-group col">
-                                    <input type="text" class="form-control" placeholder="Customer">
+                                    <input type="text" name="CUSTOMER"class="form-control" placeholder="Customer">
                                 </div>
                             </div>
                             <div class="form-row">
-                                <div class="col">
-                                    <input type="text" class="form-control" placeholder="Status">
+                                <div class="form-group col-md-6">
+                                    <input type="text" name="STATUS"class="form-control" placeholder="Status">
                                 </div>
-                                <div class="form-group col">
-                                    <input type="text" class="form-control" placeholder="Update Date">
+                                <div class="form-group col-md-3">
+                                    <?php 
+
+                                    
+                                        date_default_timezone_set('America/Araguaina');
+                                        $date = date('Y/m/d', time());
+                                        $date = date_create($date);
+                                                                            
+                                        $time = date('h:ia', time());
+                                        $time = date_create($time);
+                                        
+                                        $dateOk = date_format($date, 'd/m/Y');
+                                    ?>
+                                    <input type="date" name="DATE" class="form-control" value="<?php echo date('Y-m-d', time()); ?>">
+                                    
                                 </div>
-                            </div>
+                                <div class="form-group col-md-2">
+                                    <?php
+                                        $timeOk = date_format($time, 'h:i');
+                                    ?>
+                                    <input type="time" name="TIME" class="form-control" value="<?php echo date('h:i', time()); ?>">
+                                </div>
+                                <div class="form-group col-md-1">
+                                    <span class="input-group-text" id="basic-addon1"><?php echo date('a', time()); ?></span>
+                                </div>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="submit" class="btn btn-success" name="add-item" style="font-size: 15px;">Save</button>
+                                    <button type="button" class="btn btn-danger" data-dismiss="modal" style="font-size: 15px;">Close</button>
+                                </div>
                         </form>
-                        
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-success" name="add-item" style="font-size: 15px;">Save</button>
-                        <button type="button" class="btn btn-danger" data-dismiss="modal" style="font-size: 15px;">Close</button>
                     </div>
                 </div>
             </div>
         </div>
-        <!-- termino do modal -->
+<!-- *************************************** termino do modal *************************************** -->
 
         <div class="container-fluid">
         <div class="row" style="">
             
-        <!-- container da lateral esquerda - azul -->
-        <div class="bg-primary" style="width: 15%; height: 700px; margin: 0; padding: 0;">
+<!-- *************************************** Inicio do container da lateral azul *************************************** -->
+        <div class="bg-primary" style="width: 15%; height: 800px; margin: 0; padding: 0;">
             <div class="container-fluid" style="margin: 0; padding: 0;">
                 <div class="btn-group-vertical bg-primary" style="margin: 0; padding: 0; width: 100%; height: 100%">
                     <button type="button" class="btn btn-primary" style="height: 50px;"><i class="fas fa-angle-double-right mr-2"></i>Insight Tech</button>
@@ -83,8 +103,8 @@
             </div>
         </div>
         
-        <!-- quadro cinza fundo principal -->
-        <div class="" style="background-color: whitesmoke; width: 85%; height: 700px;">
+<!-- *************************************** Inicio do quadro cinza fundo principal *************************************** -->
+        <div class="" style="background-color: whitesmoke; width: 85%; height: 800px;">
             
             <!-- quadro all order e info do usuário (quadro branco) -->
             <div class="" style="background-color: white; width: 100%; height: 50px;">
@@ -111,7 +131,7 @@
                 </div>
             </div>
             
-            <!-- quadro pesquisa e botoes verde e azul -->
+<!-- *************************************** Inicio do quadro pesquisa e botoes verde e azul *************************************** -->
             <div class=" ml-4 mt-4" style="/*background-color: orange; */width: 95%; height: 50px;">
                 <div class="row">
                     <div class="col-sm-9">
@@ -147,15 +167,15 @@
                 </div>
             </div>
                 
-            <!-- quadro com a lista de pedidos -->
-            <div class="ml-4 mt-2 mb-4" style="/*background-color: purple;*/ width: 95%; height: 500px;">
+<!-- *************************************** Inicio do quadro com a lista de pedidos *************************************** -->
+            <div class="ml-4 mt-2 mb-4" style="/*background-color: purple;*/ width: 95%; min-height: 550px;">
                 
                 <?php
                 $mysqli = new mysqli('localhost', 'root', '', 'Sales') or die(mysqli_error($mysqli));
                 $result = $mysqli->query("SELECT * FROM Orders ORDER BY id ASC") or die($mysqli->error);
-
+                                
                 //pre_r($result);
-
+                
                 ?>
                 
                 <div class="card" style="height: 100%;">
@@ -172,15 +192,20 @@
                     </thead>
                     <tbody class="itens-lista">
                         
-                    <?php 
+                    <?php
                     while ($row  = $result->fetch_assoc()){ ?>
                         <tr>
-                            <td><?php echo $row['ORDERNUMBER']; ?></td>
+                            <td class="text-primary "><?php echo $row['ORDERNUMBER']; ?></td>
                             <td><?php echo $row['CAMPAIN']; ?></td>
                             <td><?php echo $row['PRODUCTNAME']; ?></td>
                             <td><?php echo $row['CUSTOMER']; ?></td>
                             <td><?php echo $row['STATUS']; ?></td>
-                            <td><?php echo $row['UPDATEDATE']; ?></td>
+                            <td>
+                                <?php 
+                                    $date = date_create($row['UPDATEDATE']);
+                                    echo date_format($date, 'M d, Y - h:ia');                       
+                                ?>
+                            </td>
                         </tr>
                     <?php }; ?>
 
@@ -193,6 +218,7 @@
                     print_r($array);
                     echo '</pre>';
                 }
+                    
                 ?>  
                     
                 </div>
@@ -206,8 +232,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>    
     
     <script type="text/javascript" src="js/bootstrap.min.js"></script>
-    
-    <script type="text/javascript" src="js/index.js"></script>
-
+    <script type="text/javascript" src="js/custom.js"></script>
+        
     </body>
 </html>
