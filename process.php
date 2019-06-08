@@ -1,15 +1,18 @@
 <?php
 
-$mysqli = new mysqli('localhost', 'root', '', 'vendas') or die(mysqli_error($mysqli));
+$mysqli = new mysqli('localhost', 'root', '', 'Sales') or die(mysqli_error($mysqli));
 
 if (isset($_POST['add-item'])){
-    $cliente = $_POST['cliente'];
-    $produto = $_POST['produto'];
-    $valor = $_POST['valor'];
-    $valor = removeMoeda($valor);
-    
-    
-    $mysqli->query("INSERT INTO pedidos (cliente, produto, valor) VALUES('$cliente', '$produto', '$valor')") or die($mysqli->error);
+        $Id = $_Post['ID'];
+        $OrderNumber = $_POST['ORDERNUMBER'];
+        $Campain = $_POST['CAMPAIN'];
+        $ProductName = $_POST['PRODUCTNAME'];
+        $Custumer = $_POST['CUSTOMER'];
+        $Status = $_POST['STATUS'];
+        $UpdateDate = $_POST['UPDATEDATE'];
+        
+    $mysqli->query("INSERT INTO Orders (ORDERNUMBER, CAMPAIN, PRODUCTNAME, CUSTOMER, STATUS, UPDATEDATE) VALUES(
+        '$OrderNumber', '$Campain', '$ProductName', '$Custumer', '$Status', '$UpdateDate')") or die($mysqli->error);
     
     header("Location: index.php");
 }
@@ -21,20 +24,3 @@ if (isset($_GET['delete'])){
 
     header("Location: index.php");
 }
-
-function removeMoeda($valor){
-	$pontos = array(",", ".");
-	$result = str_replace($pontos, "", $valor);
-    if($result != ''){
-        $result = $result / 100;
-        $result = (string)$result;
-    }
-    /* codigo para conseguir gravar sem preencher valor.*/
-    else{
-        
-        $result = '0';
-    }
-    /****************************************************/
-    return $result;
-}
-?>
